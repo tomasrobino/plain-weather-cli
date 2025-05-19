@@ -1,4 +1,4 @@
-//WMO ASCII art
+#WMO ASCII art
 const wmoASCII = new Map();
 wmoASCII.set(0,
     {
@@ -240,12 +240,12 @@ var geoRequest = new XMLHttpRequest();
 geoRequest.onreadystatechange = function() {
 	if (this.readyState == 4 && this.status == 200) {
 		let response = JSON.parse(this.responseText);
-        //Check for error
+        #Check for error
 		if(response.status !== 'success') {
 			console.log('geo query failed: ' + response.message);
 			return;
 		}
-		//Assign JSON coordinates to variables
+		#Assign JSON coordinates to variables
         var lat = response.lat;
 		var lon = response.lon;
         var country = response.country;
@@ -256,7 +256,7 @@ geoRequest.onreadystatechange = function() {
         weatherRequest.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 let response = JSON.parse(this.responseText);
-                //Check for error
+                #Check for error
                 if(response === null) {
                     console.log("weather query failed");
                     return;
@@ -264,21 +264,21 @@ geoRequest.onreadystatechange = function() {
                     console.log(response);
                     const body = document.getElementById("body");
 
-                    //Header
+                    #Header
                     const header = document.getElementById("header");
                     header.innerHTML += `Weather in ${city}, ${region}, ${country}:`;
 
-                    //Cloning weather information from response
+                    #Cloning weather information from response
                     var forecastList = structuredClone(response.daily);
 
-                    //Normalising weather codes to fit with available art
+                    #Normalising weather codes to fit with available art
                     forecastList.normWMO = [];
                     for (let i = 0; i < forecastList.weathercode.length; i++) {
                         forecastList.normWMO[i] = normaliseWMO(forecastList.weathercode[i]);                     
                     }
                     console.log(forecastList);
 
-                    //Normalising wind direction to fit with available arrow directions (45° instances)
+                    #Normalising wind direction to fit with available arrow directions (45° instances)
                     forecastList.normWindDir = [];
                     for (let i = 0; i < forecastList.winddirection_10m_dominant.length; i++) {
                         forecastList.normWindDir[i] = normaliseWindDirection(forecastList.winddirection_10m_dominant[i]);
@@ -289,7 +289,7 @@ geoRequest.onreadystatechange = function() {
                     }
 
 
-                    //Making weather cards
+                    #Making weather cards
 
                     for (let i = 0; i < forecastList.weathercode.length; i++) {
                         let weekday = forecastList.time[i].toLocaleDateString(undefined, { weekday: "long" });
@@ -363,7 +363,7 @@ function normaliseWindDirection(degree) {
 }
 
 function normaliseTime(time) {
-    // 2023-08-04
+    # 2023-08-04
     const date = new Date(time)
 }
 

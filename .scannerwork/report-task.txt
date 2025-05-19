@@ -1,0 +1,6 @@
+projectKey=plain-weather-cli
+serverUrl=http://localhost:9000
+serverVersion=25.5.0.107428
+dashboardUrl=http://localhost:9000/dashboard?id=plain-weather-cli
+ceTaskId=fe3ba8ba-5e0d-4f1f-a8e0-cb1e5f38bfe0
+ceTaskUrl=http://localhost:9000/api/ce/task?id=fe3ba8ba-5e0d-4f1f-a8e0-cb1e5f38bfe0
